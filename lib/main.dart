@@ -14,6 +14,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                bodyLarge:
+                    TextStyle(color: Color.fromRGBO(20, 51, 51, 1)), // body1
+                bodyMedium:
+                    TextStyle(color: Color.fromRGBO(20, 51, 51, 1)), // body2
+                titleLarge: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'RobotoCondensed',
+                    fontWeight: FontWeight.bold),
+              ),
           fontFamily: 'Raleway',
           canvasColor: Color.fromRGBO(255, 254, 229, 1),
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.pink)
