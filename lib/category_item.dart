@@ -21,6 +21,8 @@ class CategoryItem extends StatelessWidget {
     //     );
     //   },
     // ));
+
+    // use named route to navigation
     Navigator.of(ctx)
         .pushNamed('/category-meals', arguments: {'id': id, 'title': title});
   }
