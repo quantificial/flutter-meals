@@ -5,10 +5,11 @@ import './favorites_screen.dart';
 import './categories_screen.dart';
 import '../models/meal.dart';
 
+// this is the default screen
 class TabsScreen extends StatefulWidget {
   final List<Meal> favoriteMeals;
 
-  TabsScreen(this.favoriteMeals);
+  const TabsScreen(this.favoriteMeals, {super.key});
 
   @override
   _TabsScreenState createState() => _TabsScreenState();
@@ -22,7 +23,7 @@ class _TabsScreenState extends State<TabsScreen> {
   void initState() {
     _pages = [
       {
-        'page': CategoriesScreen(),
+        'page': const CategoriesScreen(),
         'title': 'Categories',
       },
       {
@@ -57,11 +58,11 @@ class _TabsScreenState extends State<TabsScreen> {
         items: [
           BottomNavigationBarItem(
               backgroundColor: Theme.of(context).colorScheme.primary,
-              icon: Icon(Icons.category),
+              icon: const Icon(Icons.category),
               label: 'Categories'),
           BottomNavigationBarItem(
               backgroundColor: Theme.of(context).colorScheme.primary,
-              icon: Icon(Icons.star),
+              icon: const Icon(Icons.star),
               label: 'Favorites'),
         ],
       ),

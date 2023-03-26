@@ -8,14 +8,17 @@ import './screens/categories_screen.dart';
 import './models/meal.dart';
 import './screens/category_meals_screen.dart';
 
+// main entry
 void main() => runApp(MyApp());
 
+// stateful app
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+  // status....
   Map<String, bool> _filters = {
     'gluten': false,
     'lactose': false,
@@ -25,6 +28,8 @@ class _MyAppState extends State<MyApp> {
   List<Meal> _availableMeals = DUMMY_MEALS;
   List<Meal> _favoriteMeals = [];
 
+  // filter function for filter screen, pass this function from
+  // main to filter screen in route table setup
   void _setFilters(Map<String, bool> filterData) {
     setState(() {
       _filters = filterData;
@@ -47,6 +52,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  // toggle favorites function passed to favorites screen
   void _toggleFavorite(String mealId) {
     final existingIndex =
         _favoriteMeals.indexWhere((meal) => meal.id == mealId);
@@ -63,6 +69,8 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  // check if meal set favorite, passed to favorite screen.
+  // why define function here as the meals list defined in main app
   bool _isMealFavorite(String id) {
     return _favoriteMeals.any((meal) => meal.id == id);
   }
@@ -71,17 +79,19 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DeliMeals',
+
+      // setup theme data
       theme: ThemeData(
-        canvasColor: Color.fromRGBO(255, 254, 229, 1),
+        canvasColor: const Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
-            bodyLarge: TextStyle(
+            bodyLarge: const TextStyle(
               color: Color.fromRGBO(20, 51, 51, 1),
             ),
-            bodyMedium: TextStyle(
+            bodyMedium: const TextStyle(
               color: Color.fromRGBO(20, 51, 51, 1),
             ),
-            titleLarge: TextStyle(
+            titleLarge: const TextStyle(
               fontSize: 20,
               fontFamily: 'RobotoCondensed',
               fontWeight: FontWeight.bold,
@@ -91,6 +101,8 @@ class _MyAppState extends State<MyApp> {
       ),
       // home: CategoriesScreen(),
       initialRoute: '/', // default is '/'
+
+      // setup route table
       routes: {
         '/': (ctx) => TabsScreen(_favoriteMeals),
         CategoryMealsScreen.routeName: (ctx) =>
@@ -110,7 +122,7 @@ class _MyAppState extends State<MyApp> {
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(
-          builder: (ctx) => CategoriesScreen(),
+          builder: (ctx) => const CategoriesScreen(),
         );
       },
     );
