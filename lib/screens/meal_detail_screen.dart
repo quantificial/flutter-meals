@@ -15,6 +15,7 @@ class MealDetailScreen extends StatelessWidget {
     );
   }
 
+// wrap the child with white card look
   Widget buildContainer(Widget child) {
     return Container(
       decoration: BoxDecoration(
